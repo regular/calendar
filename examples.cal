@@ -1,0 +1,28 @@
+# How to define syntax highlighting in vim
+# http://vim.wikia.com/wiki/Creating_your_own_syntax_files
+#
+# Normal one-time event
+2016-06-09 12:00-12:30 .work Meeting with Ada and Bob
+
+# Weekly repeated event
+2016-06-09- thursdays 14:30-18:30 .shecodes.kitchenSession Anna & Berta
+# Exceptions for specific occurance
+2016-06-16 15h-19h =.kitchenSession start later than usual
+2016-06-24 no =.kitchenSession #cancelled
+
+Grammar
+=======
+Define Event
+date-window [filter] time-window class-decl description
+
+Modify Event
+date-window no-or-time-window selector description
+
+no-or-time-window => "no" | time-window
+time-window => time "-" time
+time => DD ":" DD | DD "h"
+D => "0"|"1"|"2"|"3"|"4"|"5"|"6"
+
+date-window => date | date "-" | "-" date | date "-" date
+date => DDDD "-" DD "-" DD
+
