@@ -2,7 +2,13 @@
 const width = 32;
 const height = 16;
 
+function getTime(y) {
+    return 0.25 * y + 8.0;
+}
+
 function schedule(x, y) {
+    // time = getTime(y); 
+    // date = getDate(x)
     if (x == 2) {
         return true;
     } else {
