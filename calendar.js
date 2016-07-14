@@ -3,6 +3,25 @@ const width = 32;
 const height = 16;
 const todayColumn = 2;
 
+function parseTime(input) {
+    var m = input.match(/^(\d\d):(\d\d)$/);
+    return parseInt(m[1]) + parseInt(m[2]) / 60;
+}
+
+//unit test
+if (parseTime('09:45') !== 9.75) {
+    console.error('parseTime doesn\'t work');
+}
+if (parseTime('08:00') !== 8.00) {
+    console.error('parseTime doesn\'t work');
+}
+if (parseTime('00:00') !== 0.0) {
+    console.error('parseTime doesn\'t work');
+}
+if (parseTime('99:30') !== 99.50) {
+    console.error('parseTime doesn\'t work');
+}
+
 function getTime(y) {
     return 0.25 * y + 8.0;
 }
@@ -11,7 +30,6 @@ function getDate(x) {
     var today = new Date();
     return new Date(today.getYear() + 1900, today.getMonth(), today.getDate() + x - todayColumn);
 }
-
 
 function schedule(x, y) {
     var time = getTime(y); 
